@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b0sa98_8^%y3-epj5-$@$fhuyd3=rv92vu8-iaj^=r)m)@sou%'
+SECRET_KEY = os.environ.get("EMAIL_HOST_PASSWORD")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'auth_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'auth_system',
-        'USER': 'postgres',
-        'PASSWORD': 'test123',
-        'HOST': 'localhost'
+        'NAME': os.environ.get("NAME"),
+        'USER': os.environ.get("USER"),
+        'PASSWORD': os.environ.get("PASSWORD"),
+        'HOST': os.environ.get("HOST")
 
     }
 }
@@ -95,7 +95,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'javiercodesremote@gmail.com'
-EMAIL_HOST_PASSWORD = 'scdswneaxettckmk'
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 
 
